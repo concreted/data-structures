@@ -27,7 +27,6 @@ var queueMethods = {
     return temp;
   },
   size: function() {
-    console.log(this.storage);
     return Object.keys(this.storage).length;
   }
 };
