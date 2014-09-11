@@ -23,6 +23,3 @@ var stackMethods = {
     return Object.keys(this.storage).length;
   }
 };
-
-
-//var a = makeStack()
