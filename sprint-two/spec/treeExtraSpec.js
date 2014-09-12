@@ -11,6 +11,15 @@ describe('tree', function() {
     expect(tree.hasOwnProperty("value")).to.equal(true);
   });
 
+  it('should have a parent property and removeFromParent method', function() {
+    expect(tree.hasOwnProperty("parent")).to.equal(true);
+    expect(tree.removeFromParent).to.be.a("function");
+  });
+
+  it('should have a traverse method', function() {
+    expect(tree.traverse).to.be.a("function");
+  });
+
   it('should add children to the tree', function() {
     tree.addChild(5);
     expect(tree.children[0].value).to.equal(5);
@@ -30,6 +39,24 @@ describe('tree', function() {
     tree.addChild(5);
     tree.children[0].addChild(6);
     expect(tree.children[0].children[0].value).to.equal(6);
+  });
+
+  it('should be able to be removed from its parent tree', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    tree.children[0].children[0].addChild(7);
+    var removedTree = tree.children[0][0].removeTree();
+    expect(removedTree.value).to.equal(6);
+    expect(tree.children[0].value).to.equal(5);
+  });
+
+  it('should traverse the tree and call a function on each value', function() {
+    tree.addChild(5);
+    var val;
+    tree.traverse(function (treeVal) {
+      val = treeVal*2;
+    });
+    expect(val).to.equal(10);
   });
 
   it('should correctly detect nested children', function(){
