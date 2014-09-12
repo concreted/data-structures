@@ -76,5 +76,20 @@ describe('doublyLinkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it("PREVIOUS: should contain a value that was added", function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.prevContains(4)).to.equal(true);
+    expect(linkedList.prevContains(5)).to.equal(true);
+    expect(linkedList.prevContains(6)).to.equal(false);
+  });
+
+  it('PREVIOUS: should not contain a value that was removed', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.removeHead();
+    expect(linkedList.prevContains(4)).to.equal(false);
+  });
+
   // add more tests here to test the functionality of linkedList
 });
