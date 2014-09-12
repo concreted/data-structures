@@ -1,14 +1,87 @@
 var makeBinarySearchTree = function(value){
   var newTree = Object.create(makeBinarySearchTree.prototype);
   newTree.value = value;
-  newTree.children = [];
+  newTree.left = null;
+  newTree.right = null;
   return newTree;
 };
 
 makeBinarySearchTree.prototype = {
-  insert: function() {},
-  contains: function() {},
-  depthFirstLog: function() {}
+  insert: function(value) {
+    function traverse (tree) {
+      if (tree.value < value) {
+        if (!tree.right) {
+          tree.right = makeBinarySearchTree(value);
+        } else {
+          traverse(tree.right);
+        }
+      } else if (tree.value > value) {
+        if (!tree.left) {
+          tree.left = makeBinarySearchTree(value);
+        } else {
+          traverse(tree.left);
+        }
+      } else {
+        return;
+      }
+    }
+    traverse(this);
+  },
+  // insertIter: function (value) {
+  //   var currentTree = this;
+  //   while (true) {
+  //     if (value < currentTree.value) {
+  //        if (!currentTree.left) {
+  //          currentTree.left = makeBinarySearchTree(value);
+  //         return;
+  //       } else {
+  //         currentTree = currentTree.left;
+  //       }
+  //     } else if (value > currentTree.value) {
+  //        if (!currentTree.right) {
+  //         currentTree.right = makeBinarySearchTree(value);
+  //         return;
+  //       } else {
+  //         currentTree = currentTree.right;
+  //       }
+  //     } else {
+  //       return;
+  //     }
+  //   }
+  // },
+  contains: function(target) {
+    function traverse (tree) {
+      if (tree.value === target) {
+        return true;
+      }
+      if (tree.value < target) {
+        if (tree.right === null) {
+          return false;
+        } else {
+          return traverse(tree.right);
+        }
+      } else if (tree.value > target) {
+        if (tree.left === null) {
+          return false;
+        } else {
+          return traverse(tree.left);
+        }
+      }
+    }
+    return traverse(this);
+  },
+  depthFirstLog: function(callback) {
+    function traverse(tree) {
+      callback(tree.value);
+      if (tree.right) {
+        traverse(tree.right);
+      }
+      if (tree.left) {
+        traverse(tree.left);
+      }
+    }
+    traverse(this);
+  }
 };
 
 
