@@ -1,4 +1,4 @@
-describe('tree', function() {
+describe('tree++', function() {
   var tree;
 
   beforeEach(function() {
@@ -45,7 +45,7 @@ describe('tree', function() {
     tree.addChild(5);
     tree.children[0].addChild(6);
     tree.children[0].children[0].addChild(7);
-    var removedTree = tree.children[0][0].removeTree();
+    var removedTree = tree.children[0].children[0].removeFromParent();
     expect(removedTree.value).to.equal(6);
     expect(tree.children[0].value).to.equal(5);
   });
