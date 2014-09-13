@@ -23,7 +23,7 @@ var makeLinkedList = function(){
     if (!list.tail) {
       list.head = newNode;
       list.tail = newNode;
-    } else { //
+    } else {
       list.tail.next = newNode;
       newNode.prev = list.tail;
       list.tail = newNode;
@@ -34,15 +34,9 @@ var makeLinkedList = function(){
     var headVal = list.head.value;
     //we need to check if its the only node
     // if so, save that value, delete the node, return the value
-    // if (!list.head.prev) {
-    //   list.head = null;
-    //   list.tail = null;
-    //   return headVal;
-    // }
 
-    //debugger;
     list.head = list.head.next;
-    //debugger;
+
     if (list.head === null) {
       list.tail = null;
     } else {
@@ -55,7 +49,7 @@ var makeLinkedList = function(){
   list.removeTail = function() {
     var tailVal = list.tail.value;
     list.tail = list.tail.prev;
-    //debugger;
+
     if (list.tail === null) {
       list.head = null;
     } else {
@@ -98,7 +92,6 @@ var makeLinkedList = function(){
       return traverse(list.tail);
     }
   };
-
 
   return list;
 };

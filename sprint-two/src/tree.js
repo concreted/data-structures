@@ -6,9 +6,6 @@ var makeTree = function(value){
   return newTree;
 };
 
-
-
-
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
@@ -21,11 +18,8 @@ treeMethods.contains = function(target) {
   var traverse = function(tree) {
     if (tree.value === target) {
       flag = true;
-    } else if (!tree.children.length) {
-      //return false;
     } else {
       for (var i = 0; i < tree.children.length; i++) {
-        //if (tree.children[i].value === 7) debugger;
         traverse(tree.children[i]);
       };
     }

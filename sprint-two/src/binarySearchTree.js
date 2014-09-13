@@ -27,28 +27,7 @@ makeBinarySearchTree.prototype = {
     }
     traverse(this);
   },
-  // insertIter: function (value) {
-  //   var currentTree = this;
-  //   while (true) {
-  //     if (value < currentTree.value) {
-  //        if (!currentTree.left) {
-  //          currentTree.left = makeBinarySearchTree(value);
-  //         return;
-  //       } else {
-  //         currentTree = currentTree.left;
-  //       }
-  //     } else if (value > currentTree.value) {
-  //        if (!currentTree.right) {
-  //         currentTree.right = makeBinarySearchTree(value);
-  //         return;
-  //       } else {
-  //         currentTree = currentTree.right;
-  //       }
-  //     } else {
-  //       return;
-  //     }
-  //   }
-  // },
+
   contains: function(target) {
     function traverse (tree) {
       if (tree.value === target) {
@@ -70,6 +49,7 @@ makeBinarySearchTree.prototype = {
     }
     return traverse(this);
   },
+
   depthFirstLog: function(callback) {
     function traverse(tree) {
       callback(tree.value);

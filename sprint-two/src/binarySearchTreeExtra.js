@@ -32,10 +32,7 @@ makeBinarySearchTree.prototype = {
       }
     }
     traverse(this);
-    // how deep we go = count;
-    // how shallow we can be = this.minDepth;
-    // when to reorganize = this.minDepth * 2
-    // if count >= reorganize, rebalance();
+
     if (count >= this.minDepth() * 2) {
       this.rebalance();
     }
@@ -92,14 +89,8 @@ makeBinarySearchTree.prototype = {
     return 1 + leftSize + rightSize;
   },
 
-
-
   minDepth: function(tree) {
     return Math.floor( Math.log(this.size()) / Math.log(2) ) + 1;
-  },
-
-  maxDepth: function(tree) {
-
   },
 
   contains: function(target) {
@@ -123,6 +114,7 @@ makeBinarySearchTree.prototype = {
     }
     return traverse(this);
   },
+
   depthFirstLog: function(callback) {
     function traverse(tree) {
       callback(tree.value);

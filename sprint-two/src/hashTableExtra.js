@@ -40,7 +40,7 @@ HashTable.prototype.resize = function(newSize) {
   this._size = 0;
 
   var bucket, key, index, newBucket, value;
-  // for each bucket in the old storage array:
+
   for (var i = 0; i < oldSize; i++) {
     bucket = oldStorage.get(i);
 
