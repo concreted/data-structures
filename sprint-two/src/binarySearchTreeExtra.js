@@ -10,14 +10,18 @@ var makeBinarySearchTree = function(value){
 
 makeBinarySearchTree.prototype = {
   insert: function(value) {
+    var count = 1;
     function traverse (tree) {
+
       if (tree.value < value) {
+        count++;
         if (!tree.right) {
           tree.right = makeBinarySearchTree(value);
         } else {
           traverse(tree.right);
         }
       } else if (tree.value > value) {
+        count++;
         if (!tree.left) {
           tree.left = makeBinarySearchTree(value);
         } else {
@@ -28,6 +32,13 @@ makeBinarySearchTree.prototype = {
       }
     }
     traverse(this);
+    // how deep we go = count;
+    // how shallow we can be = this.minDepth;
+    // when to reorganize = this.minDepth * 2
+    // if count >= reorganize, rebalance();
+    if (count >= this.minDepth() * 2) {
+      this.rebalance();
+    }
 
   },
 
@@ -84,7 +95,7 @@ makeBinarySearchTree.prototype = {
 
 
   minDepth: function(tree) {
-    //return Math.pow(2, tree.nodes.length) - 1;
+    return Math.floor( Math.log(this.size()) / Math.log(2) ) + 1;
   },
 
   maxDepth: function(tree) {

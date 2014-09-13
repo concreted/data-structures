@@ -56,7 +56,6 @@ describe('binarySearchTree++', function() {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
     binarySearchTree.depthFirstLog(func);
-    console.log(array);
     expect(array).to.eql([5,2,3]);
   });
 
@@ -86,7 +85,9 @@ describe('binarySearchTree++', function() {
     binarySearchTree.insert(7);
     binarySearchTree.insert(8);
     binarySearchTree.insert(9);
-    expect(binarySearchTree.value).to.equal(5);
-    expect(binarySearchTree.size()).to.equal(10);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(11);
+    expect(binarySearchTree.value).to.equal(6);
+    expect(binarySearchTree.size()).to.equal(12);
   });
 });
